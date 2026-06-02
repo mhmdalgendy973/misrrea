@@ -10,7 +10,7 @@ import {
   LoginRequest,
   RegisterRequest,
   VerifyOtpRequest
-} from '../models/login-request';
+} from '../models/auth.models';
 
 @Injectable({
   providedIn: 'root'
