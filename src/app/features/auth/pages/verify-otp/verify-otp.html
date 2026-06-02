@@ -1,0 +1,31 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>OTP Verification</h2>
+
+    <p>Enter the verification code</p>
+
+    <form [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
+      <div class="form-group">
+        <label>OTP Code</label>
+
+        <input type="text" formControlName="otp" />
+      </div>
+
+      <button type="submit">Verify</button>
+
+      @if (successMessage) {
+
+  <p class="success">
+    {{ successMessage }}
+  </p>
+
+} @else if (errorMessage) {
+
+  <p class="error">
+    {{ errorMessage }}
+  </p>
+
+}
+    </form>
+  </div>
+</div>

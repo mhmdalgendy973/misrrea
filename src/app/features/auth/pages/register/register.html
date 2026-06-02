@@ -1,0 +1,221 @@
+<div class="auth-container">
+  <div class="auth-card register-card">
+    <h2>Create Account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="row">
+        <div class="form-group">
+          <label>First Name</label>
+
+          <input type="text" formControlName="first_name" />
+
+          @if (
+            registerForm.controls.first_name.touched &&
+            registerForm.controls.first_name.errors?.['required']
+          ) {
+            <p class="error">First Name is required</p>
+          }
+        </div>
+
+        <div class="form-group">
+          <label>Last Name</label>
+
+          <input type="text" formControlName="last_name" />
+
+          @if (
+            registerForm.controls.last_name.touched &&
+            registerForm.controls.last_name.errors?.['required']
+          ) {
+            <p class="error">Last Name is required</p>
+          }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+
+        <input type="email" formControlName="email" />
+
+        @if (
+          registerForm.controls.email.touched && registerForm.controls.email.errors?.['required']
+        ) {
+          <p class="error">Email is required</p>
+        }
+
+        @if (registerForm.controls.email.touched && registerForm.controls.email.errors?.['email']) {
+          <p class="error">Invalid email format</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+
+        <input type="text" formControlName="mobile_number" />
+
+        @if (
+          registerForm.controls.mobile_number.touched &&
+          registerForm.controls.mobile_number.errors?.['required']
+        ) {
+          <p class="error">Mobile Number is required</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Company Name</label>
+
+        <input type="text" formControlName="company_name" />
+
+        @if (
+          registerForm.controls.company_name.touched &&
+          registerForm.controls.company_name.errors?.['required']
+        ) {
+          <p class="error">Company Name is required</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Company Number</label>
+
+        <input type="text" formControlName="company_number" />
+
+        @if (
+          registerForm.controls.company_number.touched &&
+          registerForm.controls.company_number.errors?.['required']
+        ) {
+          <p class="error">Company Number is required</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Company Activity</label>
+
+        <input type="text" formControlName="company_activity" />
+
+        @if (
+          registerForm.controls.company_activity.touched &&
+          registerForm.controls.company_activity.errors?.['required']
+        ) {
+          <p class="error">Company Activity is required</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Company Email</label>
+
+        <input type="email" formControlName="company_email" />
+
+        @if (
+          registerForm.controls.company_email.touched &&
+          registerForm.controls.company_email.errors?.['email']
+        ) {
+          <p class="error">Invalid company email</p>
+        }
+      </div>
+      <div class="form-group">
+        <label>Company Description</label>
+
+        <textarea formControlName="company_description"> </textarea>
+
+        @if (
+          registerForm.controls.company_description.touched &&
+          registerForm.controls.company_description.errors?.['required']
+        ) {
+          <p class="error">Company Description is required</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Company Profile</label>
+
+        <input type="text" formControlName="company_profile" />
+
+        @if (
+          registerForm.controls.company_profile.touched &&
+          registerForm.controls.company_profile.errors?.['required']
+        ) {
+          <p class="error">Company Profile is required</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Company Address</label>
+
+        <input type="text" formControlName="company_address" />
+
+        @if (
+          registerForm.controls.company_address.touched &&
+          registerForm.controls.company_address.errors?.['required']
+        ) {
+          <p class="error">Company Address is required</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Application Purpose</label>
+
+        <textarea formControlName="application_purpose"> </textarea>
+
+        @if (
+          registerForm.controls.application_purpose.touched &&
+          registerForm.controls.application_purpose.errors?.['required']
+        ) {
+          <p class="error">Application Purpose is required</p>
+        }
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+
+        <input type="password" formControlName="password" />
+
+        @if (
+          registerForm.controls.password.touched &&
+          registerForm.controls.password.errors?.['required']
+        ) {
+          <p class="error">Password is required</p>
+        }
+
+        @if (
+          registerForm.controls.password.touched &&
+          registerForm.controls.password.errors?.['minlength']
+        ) {
+          <p class="error">Password must be at least 6 characters</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+
+        <input type="password" formControlName="password_confirmation" />
+
+        @if (
+          registerForm.controls.password_confirmation.touched &&
+          registerForm.controls.password_confirmation.errors?.['required']
+        ) {
+          <p class="error">Confirm Password is required</p>
+        }
+
+        @if (
+          registerForm.hasError('passwordMismatch') &&
+          registerForm.controls.password_confirmation.touched
+        ) {
+          <p class="error">Passwords do not match</p>
+        }
+      </div>
+
+      <button type="submit">Register</button>
+      @if (successMessage) {
+        <p class="success">
+          {{ successMessage }}
+        </p>
+      } @else if (errorMessage) {
+        <p class="error">
+          {{ errorMessage }}
+        </p>
+      }
+    </form>
+
+    <div class="login-link">
+      <a routerLink="/login"> Already have account? </a>
+    </div>
+  </div>
+</div>
